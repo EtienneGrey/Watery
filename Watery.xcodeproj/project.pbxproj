@@ -28,7 +28,7 @@
 		CD8E8F432BB8B85A0078F03F /* GardenPlantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E8F422BB8B85A0078F03F /* GardenPlantCell.swift */; };
 		CD8E8F452BB8BB170078F03F /* GardenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E8F442BB8BB170078F03F /* GardenViewModel.swift */; };
 		CD8E8F472BB8BC5A0078F03F /* PlantViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E8F462BB8BC5A0078F03F /* PlantViewModelProtocol.swift */; };
-		CD8E8F492BB8BEC40078F03F /* PlantCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E8F482BB8BEC40078F03F /* PlantCellExtension.swift */; };
+		CD8E8F492BB8BEC40078F03F /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E8F482BB8BEC40078F03F /* StaticFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,7 @@
 		CD8E8F422BB8B85A0078F03F /* GardenPlantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenPlantCell.swift; sourceTree = "<group>"; };
 		CD8E8F442BB8BB170078F03F /* GardenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenViewModel.swift; sourceTree = "<group>"; };
 		CD8E8F462BB8BC5A0078F03F /* PlantViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewModelProtocol.swift; sourceTree = "<group>"; };
-		CD8E8F482BB8BEC40078F03F /* PlantCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellExtension.swift; sourceTree = "<group>"; };
+		CD8E8F482BB8BEC40078F03F /* StaticFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				CD8E8EF12BB0FAFC0078F03F /* View.swift */,
-				CD8E8F482BB8BEC40078F03F /* PlantCellExtension.swift */,
+				CD8E8F482BB8BEC40078F03F /* StaticFunctions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 				CD8E8EF22BB0FAFC0078F03F /* View.swift in Sources */,
 				CD8E8F452BB8BB170078F03F /* GardenViewModel.swift in Sources */,
 				CD8E8EED2BB0ED830078F03F /* Plant.swift in Sources */,
-				CD8E8F492BB8BEC40078F03F /* PlantCellExtension.swift in Sources */,
+				CD8E8F492BB8BEC40078F03F /* StaticFunctions.swift in Sources */,
 				CD8E8EE52BB0E6490078F03F /* DashboardViewModel.swift in Sources */,
 				CD8E8F412BB8B5E10078F03F /* GardenView.swift in Sources */,
 				CD8E8F472BB8BC5A0078F03F /* PlantViewModelProtocol.swift in Sources */,
