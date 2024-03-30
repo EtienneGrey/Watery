@@ -87,29 +87,31 @@ struct AddAPlantView: View {
                             }
                     }
                     
+                    
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("How much light?")
+                        
+                        Text("How Much Light?")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
                         SegmentControl(
                             selectedIndex: $addAPlantVM.selectedLightIndex,
-                            options: addAPlantVM.options1
-                        )
+                            options: addAPlantVM.options1)
                         
                     }
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Plant Diameter")
+                        Text("Plant Size (Diameter)?")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
                         SegmentControl(
                             selectedIndex: $addAPlantVM.plantDiameterIndex,
-                            options: addAPlantVM.options2
-                        )
+                            options: addAPlantVM.options2)
                         
                     }
+                    
+                    
                     
                     
                 }

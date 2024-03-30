@@ -26,7 +26,7 @@ class ThemeManager {
 extension Theme {
     static let dark = Theme(
         id: "dark",
-        backgroundColor: Color(red: 16/255, green: 16/255, blue: 16/255),
+        backgroundColor: Color(red: 20/255, green: 20/255, blue: 20/255),
         primaryTextColor: Color(red: 255/255, green: 255/255, blue: 255/255),
         secondaryTextColor: .gray, accentColor: Color(red: 34/255, green: 34/255, blue: 34/255)
     )

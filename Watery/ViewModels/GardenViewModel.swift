@@ -25,7 +25,9 @@ class GardenViewModel: PlantViewModel {
     }
     
     func initPlants() {
-        allPlants = dataSource.fetchItems()
+        var tempPlants = dataSource.fetchItems()
+        tempPlants.sort(by: { $0.createdTimestamp < $1.createdTimestamp })
+        allPlants = tempPlants
     }
     
     func addPlant(newPlant: Plant) {

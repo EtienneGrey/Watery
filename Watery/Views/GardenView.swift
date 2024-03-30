@@ -19,6 +19,8 @@ struct GardenView: View {
     @State private var gardenVM: GardenViewModel = GardenViewModel()
     
     @State private var isAddViewPresented: Bool = false
+    @State private var isEditingPlants: Bool = false
+    
     @State private var offsets = [CGSize](repeating: CGSize.zero, count: 6)
     
     private var columns: [GridItem] = [
@@ -32,39 +34,71 @@ struct GardenView: View {
             themeManager.currentTheme.backgroundColor
                 .ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
-                if gardenVM.allPlants.isEmpty {
-                    ContentUnavailableView("Your garden is empty!", systemImage: "leaf")
-                        .frame(height: UIScreen.main.bounds.height / 1.5)
-                } else{
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        // Loop through the plants array to create a cell for each item
-                        ForEach(gardenVM.allPlants, id: \.self) { plant in
-                            GardenPlantCell(plant: plant) // Assuming your GardenPlantCell accepts a plant parameter
+                VStack(alignment: .leading, spacing: 30) {
+                    if gardenVM.allPlants.isEmpty {
+                        ContentUnavailableView("Your garden is empty!", systemImage: "leaf")
+                            .frame(height: UIScreen.main.bounds.height / 1.5)
+                    } else {
+                        LazyVGrid(columns: columns, spacing: 16) {
+                            // Loop through the plants array to create a cell for each item
+                            ForEach(gardenVM.allPlants, id: \.self) { plant in
+                                
+                                
+                                ZStack {
+                                    GardenPlantCell(plant: plant, gardenVM: gardenVM) // Assuming your GardenPlantCell accepts a plant parameter
+                                    
+                                    if isEditingPlants {
+                                        
+                                        Button {
+                                            withAnimation(.easeInOut) {
+                                                gardenVM.removePlant(plant: plant)
+                                            }
+                                        } label: {
+                                            Image(systemName: "trash.slash")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 25)
+                                                .foregroundStyle(.red)
+                                                .bold()
+                                                .background() {
+                                                    RoundedRectangle(cornerRadius: 5)
+                                                        .foregroundStyle(.black.opacity(0.45))
+                                                        .frame(width: 125, height: 125)
+                                                }
+                                        }
+                                        
+                                        
+                                    }
+                                    
+                                }
+                            }
                         }
                     }
                 }
-            }
-            .padding()
-            .navigationTitle("Your Garden")
-            .toolbar {
-                
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        isAddViewPresented.toggle()
-                    } label: {
-                        Image(systemName: "pencil")
-                            .foregroundStyle(themeManager.purpColor)
-                            .padding(5)
+                .padding()
+                .navigationTitle("Garden")
+                .toolbar {
+                    
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            withAnimation {
+                                isEditingPlants.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "pencil")
+                                .foregroundStyle(themeManager.purpColor)
+                                .padding(5)
+                        }
                     }
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        isAddViewPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundStyle(themeManager.purpColor)
-                            .padding(5)
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            isAddViewPresented.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundStyle(themeManager.purpColor)
+                                .padding(5)
+                        }
                     }
                 }
             }
@@ -90,4 +124,3 @@ struct GardenView: View {
             .modelContainer(for: Plant.self)
     }
 }
-

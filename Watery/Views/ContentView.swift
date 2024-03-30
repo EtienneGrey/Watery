@@ -26,6 +26,7 @@ struct ContentView: View {
             .tabItem {
                 Label("Home", systemImage: "house")
             }
+            .tag(1)
             
             NavigationStack {
                 GardenView()
@@ -34,6 +35,7 @@ struct ContentView: View {
             .tabItem {
                 Label("Garden", systemImage: "leaf")
             }
+            .tag(2)
         }
     }
 }

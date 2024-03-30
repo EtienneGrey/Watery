@@ -24,7 +24,7 @@ public struct SegmentControl: View {
     public var body: some View {
         ZStack(alignment: .center) {
             GeometryReader { geo in
-                RoundedRectangle(cornerRadius: 6.0)
+                RoundedRectangle(cornerRadius: 8.0)
                     .foregroundColor(themeManager.purpColor)
                     .cornerRadius(6.0)
                     .padding(4)
@@ -60,7 +60,7 @@ public struct SegmentControl: View {
             }
         }
         .background(
-            RoundedRectangle(cornerRadius: 6.0)
+            RoundedRectangle(cornerRadius: 10.0)
                 .fill(themeManager.currentTheme.accentColor)
         )
     }

@@ -35,9 +35,11 @@ struct DashboardView: View {
                     } else {
                         if !dashboardVM.plantTasksDueToday.isEmpty {
                             VStack(alignment: .leading, spacing: 10) {
-                                Text("Due Today")
+                                
+                                Text("Due Later This Week")
                                     .font(.title2)
                                     .bold()
+                                
                                 ForEach(dashboardVM.plantTasksDueToday) { plant in
                                     PlantCell(plant: plant)
                                         .environment(themeManager)

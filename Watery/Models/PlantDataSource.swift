@@ -38,7 +38,7 @@ final class PlantDataSource {
     
     func fetchItems() -> [Plant] {
         do {
-            return  try modelContext.fetch(FetchDescriptor<Plant>())
+            return try modelContext.fetch(FetchDescriptor<Plant>())
         } catch {
             fatalError(error.localizedDescription)
         }

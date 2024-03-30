@@ -15,26 +15,37 @@ import SwiftData
 
 struct GardenPlantCell: View {
     
+    
+    
     @Bindable var plant: Plant
     @State private var isCompleted: Bool = false
+    
     @Environment(ThemeManager.self) private var themeManager
+    var gardenVM: GardenViewModel
+    
+    //@Binding var isEditing: Bool
     
     var body: some View {
         
         VStack(spacing: 10) {
             
-            if let imageData = plant.imageData {
-                Image(uiImage: UIImage(data: imageData) ?? UIImage(imageLiteralResourceName: "empty-image"))
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 125, height: 125)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-            } else {
-                Image("empty-image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 125, height: 125)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
+            ZStack {
+                if let imageData = plant.imageData {
+                    Image(uiImage: UIImage(data: imageData) ?? UIImage(imageLiteralResourceName: "empty-image"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 125, height: 125)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                } else {
+                    Image("empty-image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 125, height: 125)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                }
+             
+               
+                
             }
             
             VStack(alignment: .leading) {
@@ -70,7 +81,7 @@ struct GardenPlantCell: View {
     let container = try! ModelContainer(for: Plant.self, configurations: config)
     
     let plant = Plant(id: UUID().uuidString, name: "Plant Name", plantType: "Plant Type", lastWateredDate: .now, wateringFrequencyDays: 5)
-    return GardenPlantCell(plant: plant)
+    return GardenPlantCell(plant: plant, gardenVM: GardenViewModel())
         .environment(ThemeManager())
         .modelContainer(container)
         .preferredColorScheme(.dark)

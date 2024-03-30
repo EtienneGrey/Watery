@@ -23,6 +23,17 @@ class DashboardViewModel: PlantViewModel {
         return allPlants.filter { shouldWaterToday(lastWateredDate: $0.lastWateredDate, wateringFrequencyDays: $0.wateringFrequencyDays) }
     }
     
+    var plantTasksForTomorrow: [Plant] {
+        
+        let plansDueTomorrow = allPlants
+            .filter( {
+                !shouldWaterToday(lastWateredDate: $0.lastWateredDate, wateringFrequencyDays: $0.wateringFrequencyDays)
+            })
+            
+        return plansDueTomorrow
+        
+    }
+    
     var plantTasksDueLater: [Plant] {
         let plantsDueLater = allPlants
             .filter { !shouldWaterToday(lastWateredDate: $0.lastWateredDate, wateringFrequencyDays: $0.wateringFrequencyDays) }

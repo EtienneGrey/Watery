@@ -65,11 +65,12 @@ struct PlantCell: View {
             Spacer()
             Button {
                 withAnimation(.easeInOut) {
-                    isCompleted.toggle()
+                    isCompleted = true
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    withAnimation {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation(.easeInOut) {
                         plant.lastWateredDate = .now
+
                         isCompleted = false
                     }
                 }
