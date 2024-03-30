@@ -23,12 +23,11 @@ struct GardenPlantCell: View {
     @Environment(ThemeManager.self) private var themeManager
     var gardenVM: GardenViewModel
     
-    //@Binding var isEditing: Bool
+    @Binding var isEditing: Bool
     
     var body: some View {
         
         VStack(spacing: 10) {
-            
             ZStack {
                 if let imageData = plant.imageData {
                     Image(uiImage: UIImage(data: imageData) ?? UIImage(imageLiteralResourceName: "empty-image"))
@@ -43,11 +42,26 @@ struct GardenPlantCell: View {
                         .frame(width: 125, height: 125)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                 }
-             
-               
-                
+                if isEditing {
+                    Button {
+                        withAnimation(.easeInOut) {
+                            gardenVM.removePlant(plant: plant)
+                        }
+                    } label: {
+                        Image(systemName: "trash.slash")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25)
+                            .foregroundStyle(.red)
+                            .bold()
+                            .background() {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .foregroundStyle(.black.opacity(0.45))
+                                    .frame(width: 125, height: 125)
+                            }
+                    }
+                }
             }
-            
             VStack(alignment: .leading) {
                 HStack {
                     Text(plant.name)
@@ -81,7 +95,7 @@ struct GardenPlantCell: View {
     let container = try! ModelContainer(for: Plant.self, configurations: config)
     
     let plant = Plant(id: UUID().uuidString, name: "Plant Name", plantType: "Plant Type", lastWateredDate: .now, wateringFrequencyDays: 5)
-    return GardenPlantCell(plant: plant, gardenVM: GardenViewModel())
+    return GardenPlantCell(plant: plant, gardenVM: GardenViewModel(), isEditing: .constant(false))
         .environment(ThemeManager())
         .modelContainer(container)
         .preferredColorScheme(.dark)

@@ -42,35 +42,9 @@ struct GardenView: View {
                         LazyVGrid(columns: columns, spacing: 16) {
                             // Loop through the plants array to create a cell for each item
                             ForEach(gardenVM.allPlants, id: \.self) { plant in
-                                
-                                
-                                ZStack {
-                                    GardenPlantCell(plant: plant, gardenVM: gardenVM) // Assuming your GardenPlantCell accepts a plant parameter
-                                    
-                                    if isEditingPlants {
-                                        
-                                        Button {
-                                            withAnimation(.easeInOut) {
-                                                gardenVM.removePlant(plant: plant)
-                                            }
-                                        } label: {
-                                            Image(systemName: "trash.slash")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 25)
-                                                .foregroundStyle(.red)
-                                                .bold()
-                                                .background() {
-                                                    RoundedRectangle(cornerRadius: 5)
-                                                        .foregroundStyle(.black.opacity(0.45))
-                                                        .frame(width: 125, height: 125)
-                                                }
-                                        }
-                                        
-                                        
-                                    }
-                                    
-                                }
+
+                                GardenPlantCell(plant: plant, gardenVM: gardenVM, isEditing: $isEditingPlants) // Assuming your GardenPlantCell accepts a plant parameter
+       
                             }
                         }
                     }
